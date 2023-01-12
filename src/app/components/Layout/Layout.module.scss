@@ -5,4 +5,45 @@
   background-color: colors("yellow");
   height: 50px;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+
+    .wrapperSearch {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .search {
+        display: flex;
+        width: 800px;
+        height: 30px;
+        border: none;
+        border-radius: 2px 0 0 2px;
+        font-size: 18px;
+        padding: 0px 10px;
+      }
+
+      .wrapperIcon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+        border-radius: 0 2px 2px 0;
+        background-color: colors("light");
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.wrapperChildren {
+  padding: 16px 270px;
 }

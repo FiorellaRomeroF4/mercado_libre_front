@@ -1,0 +1,33 @@
+@import "../../../styles/abstracts";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  background-color: colors("white");
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+
+    .wrapperImgInfo {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      .wrapperInformation {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 10px 0;
+
+        .wrapperPrice {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import "../abstracts";
+
 * {
   background-repeat: no-repeat;
   box-sizing: border-box;
@@ -45,11 +47,32 @@ html {
     }
 
     h3 {
-      font-size: 1.25em;
+      font-size: 1.125em;
+    }
+
+    h4 {
+      font-size: 0.875em;
+    }
+
+    h5 {
+      font-size: 0.75em;
+    }
+
+    hr {
+      height: 1px;
+      width: 95%;
+      background-color: colors("light");
+      border: none;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     #root {
       height: 100%;
     }
+  }
+
+  input:focus {
+    outline: none;
   }
 }

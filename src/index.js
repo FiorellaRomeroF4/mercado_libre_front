@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
-import { store } from "./app/store";
+import { store } from "./app/core/store";
 import { AppRouter } from "./app/Router";
 
 import "antd/dist/reset.css";
