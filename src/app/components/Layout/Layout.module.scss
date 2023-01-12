@@ -1,0 +1,8 @@
+@import "../../../styles/abstracts";
+
+.layout {
+  display: flex;
+  background-color: colors("yellow");
+  height: 50px;
+  width: 100%;
+}
