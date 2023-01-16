@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./List.module.scss";
 import shipping from "../../assets/icons/shipping.png";
-import { categoryResult } from "../../utilities/helpers";
+import { categoryResult, priceString } from "../../utilities/helpers";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getItemsList } from "../../core/store/search";
 
@@ -76,7 +76,7 @@ export const ItemsList = () => {
                 />
                 <div className={styles.wrapperInformation}>
                   <div className={styles.wrapperPrice}>
-                    <h2>{`${ele.currency} ${ele.price}`}</h2>
+                    <h2>{`$ ${priceString(ele.price)} ${ele.currency}`}</h2>
                     {ele.freeShipping && <img alt="icon" src={shipping} />}
                   </div>
                   <div>

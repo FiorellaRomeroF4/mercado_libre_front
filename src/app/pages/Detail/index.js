@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getItemDetail } from "../../core/store/search";
+import { priceString } from "../../utilities/helpers";
 import styles from "./Detail.module.scss";
 
 export const ItemDetail = () => {
@@ -66,8 +67,8 @@ export const ItemDetail = () => {
                 <img
                   alt="item"
                   src={item.picture}
-                  width="580px"
-                  height="580px"
+                  width="480px"
+                  height="480px"
                   className={styles.image}
                 />
               </div>
@@ -86,14 +87,16 @@ export const ItemDetail = () => {
                     margin: "32px 0 32px 0",
                     lineHeight: "1em",
                   }}
-                >{`${item.price?.currency} ${item.price?.amount}`}</div>
+                >{`$ ${priceString(item.price?.amount)} ${
+                  item.price?.currency
+                }`}</div>
                 <button className={styles.button} onClick={handleBuy}>
                   Comprar
                 </button>
               </div>
             </div>
             <div className={styles.wrapperFooter}>
-              <div style={{ fontSize: "28px", marginBottom: "32px" }}>
+              <div style={{ fontSize: "28px", margin: "32px 0px" }}>
                 Descripción del producto
               </div>
               <p style={{ color: "#999999" }}>{item.description}</p>
