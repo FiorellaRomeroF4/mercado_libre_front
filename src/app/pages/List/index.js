@@ -22,7 +22,7 @@ export const ItemsList = () => {
     if (searchWord !== "") {
       dispatch(getItemsList(searchWord));
     }
-  }, [searchWord]);
+  }, []);
 
   useEffect(() => {
     if (searchList && searchList.items.length > 0) {
@@ -50,7 +50,7 @@ export const ItemsList = () => {
     navigate(
       `/items/${id}?itemCategory=${categories[index]}&category=${categoryResult(
         categories
-      )}&searchWord=${searchWord}`
+      )}&search=${searchWord}`
     );
   };
 

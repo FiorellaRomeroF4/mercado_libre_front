@@ -14,12 +14,22 @@
     flex-direction: row;
     padding: 16px;
 
+    @media (max-width: $medium) {
+      flex-direction: column;
+    }
+
     .wrapperImgInfo {
       display: flex;
       flex-direction: row;
       width: 70%;
       gap: 16px;
       cursor: pointer;
+
+      @media (max-width: $medium) {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+      }
 
       .wrapperInformation {
         display: flex;
@@ -39,6 +49,11 @@
       display: flex;
       width: 30%;
       padding-left: 100px;
+
+      @media (max-width: $medium) {
+        width: 100%;
+        padding-left: 0;
+      }
     }
   }
 }

@@ -24,16 +24,28 @@
     display: flex;
     flex-direction: row;
 
+    @media (max-width: $medium) {
+      flex-direction: column;
+    }
+
     .wrapperImage {
       display: flex;
       padding: 0;
       width: 70%;
+
+      @media (max-width: $medium) {
+        width: 100%;
+      }
     }
 
     .wrapperInfo {
       display: flex;
       flex-direction: column;
       width: 30%;
+
+      @media (max-width: $medium) {
+        width: 100%;
+      }
 
       .button {
         display: flex;
@@ -45,6 +57,10 @@
         color: colors("white");
         border: none;
         cursor: pointer;
+
+        @media (max-width: $medium) {
+          margin-bottom: 32px;
+        }
       }
     }
   }
@@ -53,5 +69,9 @@
     display: flex;
     flex-direction: column;
     width: 70%;
+
+    @media (max-width: $medium) {
+      width: 100%;
+    }
   }
 }

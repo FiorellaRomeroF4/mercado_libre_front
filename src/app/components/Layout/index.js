@@ -5,14 +5,17 @@ import styles from "./Layout.module.scss";
 import logo from "../../assets/icons/logo.png";
 import searchIcon from "../../assets/icons/search.png";
 import { getItemsList } from "../../core/store/search";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items } = useSelector((state) => state);
   const { isSuccess } = items;
-  const [searchWord, setSearchWord] = useState("");
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const searhWordQuery = params.get("search");
+  const [searchWord, setSearchWord] = useState(searhWordQuery);
 
   useEffect(() => {
     if (isSuccess) {
@@ -30,12 +33,16 @@ export const Layout = ({ children }) => {
       if (e.key === "Enter") {
         dispatch(getItemsList(searchWord));
       }
+    } else {
+      navigate(`/`);
     }
   };
 
   const handleSearch = () => {
     if (searchWord !== "") {
       dispatch(getItemsList(searchWord));
+    } else {
+      navigate(`/`);
     }
   };
 

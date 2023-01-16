@@ -27,6 +27,10 @@
         border-radius: 2px 0 0 2px;
         font-size: 18px;
         padding: 0px 10px;
+
+        @media (max-width: $medium) {
+          width: 200px;
+        }
       }
 
       .wrapperIcon {
@@ -46,4 +50,8 @@
 
 .wrapperChildren {
   padding: 16px 270px;
+
+  @media (max-width: $medium) {
+    padding: 16px;
+  }
 }
