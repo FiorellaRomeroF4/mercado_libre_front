@@ -33,13 +33,21 @@ export const ItemDetail = () => {
     dispatch(getItemsList(searchWord));
   };
 
+  const handleBuy = () => {
+    console.log("add to cart");
+  };
+
   return (
     <div>
       <div className={styles.breadcrumb}>
-        <button onClick={handleBack} className={styles.linkButton}>
-          {category}
-        </button>
-        <h4 style={{ color: "#999999" }}>{`> ${itemCategory}`}</h4>
+        {category && itemCategory && (
+          <>
+            <button onClick={handleBack} className={styles.linkButton}>
+              {category}
+            </button>
+            <h4 style={{ color: "#999999" }}>{`> ${itemCategory}`}</h4>
+          </>
+        )}
       </div>
       <div className={styles.card}>
         {isLoadingDetail ? (
@@ -65,7 +73,9 @@ export const ItemDetail = () => {
                 <div
                   style={{ fontSize: "46px", margin: "32px 0 32px 0" }}
                 >{`${item.price?.currency} ${item.price?.amount}`}</div>
-                <button className={styles.button}>Comprar</button>
+                <button className={styles.button} onClick={handleBuy}>
+                  Comprar
+                </button>
               </div>
             </div>
             <div className={styles.wrapperFooter}>
