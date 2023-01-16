@@ -80,7 +80,7 @@ export const ItemsList = () => {
                     {ele.freeShipping && <img alt="icon" src={shipping} />}
                   </div>
                   <div>
-                    <h3>{ele.title}</h3>
+                    <h3 style={{ lineHeight: "1.25em" }}>{ele.title}</h3>
                     <h3>{ele.condition === "new" ? "Nuevo" : ele.condition}</h3>
                   </div>
                 </div>

@@ -69,7 +69,9 @@ export const ItemDetail = () => {
                 } - ${item.sold_quantity} ${
                   item.sold_quantity === 1 ? "vendido" : "vendidos"
                 } `}</h4>
-                <h2 style={{ fontWeight: "700" }}>{item.title}</h2>
+                <h2 style={{ fontWeight: "700", lineHeight: "1.25em" }}>
+                  {item.title}
+                </h2>
                 <div
                   style={{ fontSize: "46px", margin: "32px 0 32px 0" }}
                 >{`${item.price?.currency} ${item.price?.amount}`}</div>
