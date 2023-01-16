@@ -68,6 +68,7 @@ export const ItemDetail = () => {
                   src={item.picture}
                   width="580px"
                   height="580px"
+                  className={styles.image}
                 />
               </div>
               <div className={styles.wrapperInfo}>
@@ -80,7 +81,11 @@ export const ItemDetail = () => {
                   {item.title}
                 </h2>
                 <div
-                  style={{ fontSize: "46px", margin: "32px 0 32px 0" }}
+                  style={{
+                    fontSize: "46px",
+                    margin: "32px 0 32px 0",
+                    lineHeight: "1em",
+                  }}
                 >{`${item.price?.currency} ${item.price?.amount}`}</div>
                 <button className={styles.button} onClick={handleBuy}>
                   Comprar

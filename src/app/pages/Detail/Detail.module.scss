@@ -36,6 +36,13 @@
       @media (max-width: $medium) {
         width: 100%;
       }
+
+      .image {
+        @media (max-width: $medium) {
+          width: 380px;
+          height: 380px;
+        }
+      }
     }
 
     .wrapperInfo {
