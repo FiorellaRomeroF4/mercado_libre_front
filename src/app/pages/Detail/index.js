@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { getItemDetail, getItemsList } from "../../core/store/search";
+import { getItemDetail } from "../../core/store/search";
 import styles from "./Detail.module.scss";
 
 export const ItemDetail = () => {
@@ -24,13 +24,16 @@ export const ItemDetail = () => {
 
   useEffect(() => {
     if (isSuccessDetail) {
-      setItem(itemDetail);
+      setItem(itemDetail?.item);
     }
   }, [isSuccessDetail]);
 
   const handleBack = () => {
     navigate(`/items?search=${searchWord}`);
-    dispatch(getItemsList(searchWord));
+  };
+
+  const handleBackHome = () => {
+    navigate(`/`);
   };
 
   const handleBuy = () => {
@@ -40,13 +43,17 @@ export const ItemDetail = () => {
   return (
     <div>
       <div className={styles.breadcrumb}>
-        {category && itemCategory && (
+        {category && itemCategory ? (
           <>
             <button onClick={handleBack} className={styles.linkButton}>
               {category}
             </button>
             <h4 style={{ color: "#999999" }}>{`> ${itemCategory}`}</h4>
           </>
+        ) : (
+          <button onClick={handleBackHome} className={styles.linkButton}>
+            Home
+          </button>
         )}
       </div>
       <div className={styles.card}>
