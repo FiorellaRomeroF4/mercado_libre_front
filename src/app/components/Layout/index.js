@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 export const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { search } = useSelector((state) => state);
-  const { isSuccess } = search;
+  const { items } = useSelector((state) => state);
+  const { isSuccess } = items;
   const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/items?search=");
+      navigate(`/items?search=${searchWord}`);
     }
   }, [isSuccess]);
 

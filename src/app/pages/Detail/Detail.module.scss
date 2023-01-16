@@ -1,0 +1,57 @@
+@import "../../../styles/abstracts";
+
+.breadcrumb {
+  display: flex;
+  padding: 0;
+  margin-bottom: 16px;
+  align-items: center;
+
+  .linkButton {
+    display: flex;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: colors("grey200");
+  }
+}
+
+.card {
+  @include card;
+  padding: 32px;
+
+  .wrapperHeader {
+    display: flex;
+    flex-direction: row;
+
+    .wrapperImage {
+      display: flex;
+      padding: 0;
+      width: 70%;
+    }
+
+    .wrapperInfo {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        border-radius: 4px;
+        background-color: colors("blue");
+        color: colors("white");
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .wrapperFooter {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+}

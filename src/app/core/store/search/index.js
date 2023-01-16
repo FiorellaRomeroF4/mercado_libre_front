@@ -2,12 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { axiosClient } from "../../services/axiosInstance";
 
 export const slice = createSlice({
-  name: "search",
+  name: "items",
   initialState: {
     searchList: null,
+    itemDetail: null,
     isLoading: false,
     isSuccess: false,
     isFail: false,
+    isLoadingDetail: false,
+    isSuccessDetail: false,
+    isFailDetail: false,
     error: {},
   },
   reducers: {
@@ -37,55 +41,62 @@ export const slice = createSlice({
         isFail: true,
       };
     },
+    getItemDetailRequest: (state) => {
+      return {
+        ...state,
+        isLoadingDetail: true,
+        isSuccessDetail: false,
+        isFailDetail: false,
+      };
+    },
+    getItemDetailSuccess: (state, action) => {
+      return {
+        ...state,
+        itemDetail: action.payload,
+        isLoadingDetail: false,
+        isSuccessDetail: true,
+        isFailDetail: false,
+      };
+    },
+    getItemDetailFail: (state, action) => {
+      return {
+        ...state,
+        isLoadingDetail: false,
+        isSuccessDetail: false,
+        isFailDetail: true,
+        error: action.payload,
+      };
+    },
   },
 });
 
 export default slice.reducer;
 
-export const { getItemsListRequest, getItemsListSuccess, getItemsListFail } =
-  slice.actions;
+export const {
+  getItemsListRequest,
+  getItemsListSuccess,
+  getItemsListFail,
+  getItemDetailRequest,
+  getItemDetailSuccess,
+  getItemDetailFail,
+} = slice.actions;
 
 export const getItemsList = (searchWord) => async (dispatch) => {
   dispatch(getItemsListRequest());
   try {
-    // const res = await axiosClient.get(`/items?q=${searchWord}`);
-    const res = {
-      autor: {
-        name: "Fiorella",
-        lastname: "Romero Fuentes",
-      },
-      categories: ["Belleza, Calzado, Ropa"],
-      items: [
-        {
-          id: "100",
-          title: "Cosmetiquera",
-          price: {
-            currency: "COP",
-            amount: 1,
-            decimals: 0,
-          },
-          picture:
-            "https://tse1.mm.bing.net/th?id=OIP.TsQx4vfsWBtNYFjhivUV2gHaHa&pid=Api&P=0",
-          condition: "Nuevo",
-          free_shipping: true,
-        },
-        {
-          id: "100",
-          title: "Cosmetiquera",
-          price: {
-            currency: "COP",
-            amount: 1,
-            decimals: 0,
-          },
-          picture:
-            "https://tse1.mm.bing.net/th?id=OIP.TsQx4vfsWBtNYFjhivUV2gHaHa&pid=Api&P=0",
-          condition: "Nuevo",
-          free_shipping: false,
-        },
-      ],
-    };
-    dispatch(getItemsListSuccess(res));
+    const res = await axiosClient.get(`/items?q=${searchWord}`);
+    dispatch(getItemsListSuccess(res.data));
   } catch (error) {
     dispatch(getItemsListFail(error.response.data));
+  }
+};
+
+export const getItemDetail = (id) => async (dispatch) => {
+  dispatch(getItemDetailRequest());
+  try {
+    const res = await axiosClient.get(`items/${id}`);
+    dispatch(getItemDetailSuccess(res.data));
+  } catch (error) {
+    dispatch(getItemDetailFail(error.response.data));
   }
 };
